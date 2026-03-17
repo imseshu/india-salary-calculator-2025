@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>India Salary Calculator — FY 2025-26</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --saffron: #FF6B00;
+      --saffron-lt: #FF8C3A;
+      --saffron-pale: #FFF3E8;
+      --green: #138808;
+      --green-lt: #1DB30E;
+      --green-pale: #EAF7EA;
+      --navy: #0A1628;
+      --navy-mid: #1A2D4A;
+      --navy-soft: #243553;
+      --silver: #C8D0DC;
+      --cream: #FFFDF8;
+      --muted: #6B7A90;
+      --white: #ffffff;
+      --danger: #E03131;
+      --danger-pale: #FFF0F0;
+      --gold: #C9960C;
+      --gold-pale: #FFFBE8;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(10,22,40,0.10);
+      --shadow-lg: 0 8px 48px rgba(10,22,40,0.16);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      min-height: 100vh;
+    }
+
+    /* ── Header ─────────────────────────────── */
+    header {
+      background: var(--navy);
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--saffron);
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-emblem {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--saffron) 0%, #FF9A4D 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .logo-sub {
+      font-size: 0.7rem;
+      color: var(--silver);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-left: 48px;
+      margin-top: -18px;
+    }
+    .header-badge {
+      background: var(--saffron);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Layout ─────────────────────────────── */
+    .page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ── Cards ──────────────────────────────── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .card-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid #F0F2F5;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .icon-saffron { background: var(--saffron-pale); }
+    .icon-green { background: var(--green-pale); }
+    .icon-navy { background: #EEF1F6; }
+    .icon-gold { background: var(--gold-pale); }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .card-subtitle { font-size: 0.75rem; color: var(--muted); font-weight: 400; }
+    .card-body { padding: 1.5rem; }
+
+    /* ── Form Grid ───────────────────────────── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.25rem;
+    }
+    .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+    .form-full { grid-column: 1 / -1; }
+
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .field label span { color: var(--saffron); font-weight: 300; }
+    .input-wrap { position: relative; }
+    .input-wrap .prefix {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+      pointer-events: none;
+    }
+    .input-wrap input {
+      width: 100%;
+      padding: 10px 12px 10px 28px;
+      border: 1.5px solid #E2E6EE;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--navy);
+      background: #FAFBFC;
+      transition: all 0.2s;
+      outline: none;
+    }
+    .input-wrap input:focus {
+      border-color: var(--saffron);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(255,107,0,0.1);
+    }
+    .input-wrap input:hover { border-color: #C5CAD8; }
+
+    /* ── Toggle ─────────────────────────────── */
+    .toggle-group {
+      display: flex;
+      gap: 0;
+      border: 1.5px solid #E2E6EE;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #FAFBFC;
+    }
+    .toggle-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .toggle-btn.active-old {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .toggle-btn.active-new {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    /* ── Checkbox ────────────────────────────── */
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .check-row input[type=checkbox] {
+      width: 18px; height: 18px;
+      accent-color: var(--saffron);
+      cursor: pointer;
+    }
+    .check-row span {
+      font-size: 0.85rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* ── Submit ──────────────────────────────── */
+    .btn-calculate {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--saffron) 0%, #FF8C3A 100%);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(255,107,0,0.35);
+    }
+    .btn-calculate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255,107,0,0.45);
+    }
+    .btn-calculate:active { transform: translateY(0); }
+
+    .btn-reset {
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      color: var(--muted);
+      border: 1.5px solid #E2E6EE;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 10px;
+    }
+    .btn-reset:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* ── Results Panel ───────────────────────── */
+    .results-col { position: sticky; top: 90px; }
+
+    .results-placeholder {
+      border: 2px dashed #D8DDE8;
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--muted);
+    }
+    .results-placeholder .ph-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
+    .results-placeholder p { font-size: 0.9rem; line-height: 1.6; }
+
+    .results-card { display: none; }
+
+    /* Take-home Hero */
+    .takehome-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1E3A6E 100%);
+      border-radius: var(--radius);
+      padding: 2rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .takehome-hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(255,107,0,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .takehome-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: 60px;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(19,136,8,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.7;
+      margin-bottom: 6px;
+    }
+    .hero-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-month { font-size: 0.8rem; opacity: 0.6; margin-bottom: 1.5rem; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-stat { }
+    .hero-stat-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; margin-bottom: 3px; }
+    .hero-stat-val { font-size: 1.05rem; font-weight: 600; }
+    .hero-stat-val.orange { color: #FFA55C; }
+    .hero-stat-val.green { color: #5EDB50; }
+
+    /* Breakdown table */
+    .breakdown-table { width: 100%; border-collapse: collapse; }
+    .breakdown-table tr:not(:last-child) td { border-bottom: 1px solid #F0F2F5; }
+    .breakdown-table td { padding: 9px 0; font-size: 0.85rem; }
+    .breakdown-table td:last-child { text-align: right; font-weight: 600; }
+    .breakdown-table .section-row td {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      padding-top: 14px;
+      padding-bottom: 4px;
+    }
+    .breakdown-table .total-row td {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 0.9rem;
+      border-top: 2px solid #E2E6EE;
+      padding-top: 10px;
+    }
+    .breakdown-table .takehome-row td {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--green);
+      border-top: 2px solid var(--green);
+      padding-top: 10px;
+    }
+    .deduction-val { color: var(--danger); }
+    .positive-val { color: var(--green); }
+
+    /* Tab toggle */
+    .tab-row {
+      display: flex;
+      gap: 0;
+      background: #F4F5F8;
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 1rem;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: 0 2px 8px rgba(10,22,40,0.1);
+    }
+
+    /* Tax details */
+    .tax-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .tax-badge.new-regime { background: var(--green-pale); color: var(--green); }
+    .tax-badge.old-regime { background: var(--gold-pale); color: var(--gold); }
+
+    .eff-rate-bar {
+      height: 6px;
+      background: #EEF0F4;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .eff-rate-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--saffron));
+      border-radius: 10px;
+      transition: width 0.8s ease;
+    }
+
+    /* Suggestions */
+    .suggestion-item {
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    .sug-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+    .sug-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+    .sug-body { font-size: 0.8rem; line-height: 1.5; }
+    .sug-warning { background: #FFF8EE; border-left: 3px solid #FFA500; }
+    .sug-danger { background: var(--danger-pale); border-left: 3px solid var(--danger); }
+    .sug-info { background: #EEF5FF; border-left: 3px solid #3A8EF5; }
+    .sug-tip { background: var(--gold-pale); border-left: 3px solid var(--gold); }
+    .sug-success { background: var(--green-pale); border-left: 3px solid var(--green); }
+
+    /* Section divider */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0.5rem 0 1.2rem;
+    }
+    .section-divider span {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .section-divider::before, .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #E8EBF2;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      display: none;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .spinner-ring {
+      width: 36px; height: 36px;
+      border: 3px solid #EEF0F4;
+      border-top-color: var(--saffron);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Fade in */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.4s ease both; }
+
+    /* Mobile */
+    @media (max-width: 960px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+      .results-col { position: static; }
+      .form-grid.three { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .form-grid, .form-grid.three { grid-template-columns: 1fr; }
+      .hero-amount { font-size: 2rem; }
+    }
+
+    /* Error */
+    .error-box {
+      background: var(--danger-pale);
+      border: 1px solid #FFBABA;
+      color: var(--danger);
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    /* Note pill */
+    .note-pill {
+      display: inline-block;
+      background: #F0F2F6;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="logo">
+        <div class="logo-emblem">₹</div>
+        <div class="logo-text">SalaryCalc India</div>
+      </div>
+      <div class="logo-sub">Indian Income Tax · FY 2025–26</div>
+    </div>
+    <span class="header-badge">AY 2026–27</span>
+  </div>
+</header>
+
+<div class="page">
+  <!-- ── LEFT: Input Column ─────────────────────────────── -->
+  <div class="input-col">
+
+    <!-- Fixed Pay -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-saffron">💼</div>
+        <div>
+          <div class="card-title">Fixed Salary Components</div>
+          <div class="card-subtitle">Monthly amounts — all fields in ₹/month</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field">
+            <label>Basic Salary <span>*</span></label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="basic" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>HRA</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="hra" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Special Allowance</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="special_allowance" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>LTA <span class="note-pill">Leave Travel Allowance</span></label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="lta" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Food / Meal Allowance</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="food_allowance" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Medical Allowance</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="medical_allowance" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Transport Allowance</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="transport_allowance" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Other Allowances</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="other_allowances" placeholder="0" min="0"/></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variable Pay -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">📈</div>
+        <div>
+          <div class="card-title">Variable Pay &amp; Bonus</div>
+          <div class="card-subtitle">Annual amounts</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field">
+            <label>Annual Variable Pay</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="variable_pay_annual" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Annual Bonus / Incentive</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="bonus_annual" placeholder="0" min="0"/></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deductions -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-navy">🔒</div>
+        <div>
+          <div class="card-title">Deductions</div>
+          <div class="card-subtitle">Monthly amounts — statutory &amp; voluntary</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="section-divider"><span>Employee Deductions</span></div>
+        <div class="form-grid">
+          <div class="field">
+            <label>Employee PF <span class="note-pill">12% of Basic</span></label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="employee_pf" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Employee ESI <span class="note-pill">if salary ≤ ₹21k</span></label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="employee_esi" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>NPS (Employee) <span class="note-pill">80CCD(1)</span></label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="nps_employee" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Professional Tax</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="professional_tax" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Other Deductions</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="other_deductions" placeholder="0" min="0"/></div>
+          </div>
+        </div>
+
+        <div class="section-divider"><span>Employer Contributions (CTC)</span></div>
+        <div class="form-grid">
+          <div class="field">
+            <label>Employer PF <span class="note-pill">12% of Basic</span></label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="employer_pf" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Employer ESI</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="employer_esi" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field">
+            <label>Gratuity Provision</label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="gratuity" placeholder="0" min="0"/></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tax Regime -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-green">🏛️</div>
+        <div>
+          <div class="card-title">Tax Regime &amp; Exemptions</div>
+          <div class="card-subtitle">Choose regime and enter applicable deductions</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field form-full" style="margin-bottom:1.2rem">
+          <label>Income Tax Regime</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active-new" id="btn-new" onclick="setRegime('new')">New Regime (Default · FY25-26)</button>
+            <button class="toggle-btn" id="btn-old" onclick="setRegime('old')">Old Regime</button>
+          </div>
+        </div>
+
+        <!-- Always shown -->
+        <div class="form-grid" style="margin-bottom:0.8rem">
+          <div class="field">
+            <label>Annual Rent Paid <span class="note-pill">for HRA calc</span></label>
+            <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="rent_paid_annual" placeholder="0" min="0"/></div>
+          </div>
+          <div class="field" style="justify-content:flex-end;padding-bottom:4px">
+            <label style="visibility:hidden">Metro</label>
+            <label class="check-row">
+              <input type="checkbox" id="is_metro"/>
+              <span>Metro City (50% HRA exemption)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Old regime only -->
+        <div id="old-regime-section" style="display:none">
+          <div class="section-divider"><span>Chapter VI-A Deductions (Old Regime Only)</span></div>
+          <div class="form-grid">
+            <div class="field">
+              <label>Section 80C <span class="note-pill">max ₹1.5L</span></label>
+              <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="sec80c" placeholder="0" min="0" max="150000"/></div>
+            </div>
+            <div class="field">
+              <label>Section 80D <span class="note-pill">health insurance</span></label>
+              <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="sec80d" placeholder="0" min="0"/></div>
+            </div>
+            <div class="field">
+              <label>Home Loan Interest <span class="note-pill">Sec 24(b)</span></label>
+              <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="home_loan_interest" placeholder="0" min="0"/></div>
+            </div>
+            <div class="field">
+              <label>NPS 80CCD(1B) <span class="note-pill">max ₹50K</span></label>
+              <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="nps_80ccd" placeholder="0" min="0" max="50000"/></div>
+            </div>
+            <div class="field">
+              <label>Other Deductions (80G etc)</label>
+              <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="other_80_deductions" placeholder="0" min="0"/></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="error-box" id="error-box"></div>
+    <button class="btn-calculate" onclick="calculate()">Calculate Take-Home Salary →</button>
+    <button class="btn-reset" onclick="resetForm()">↺ Reset All Fields</button>
+
+  </div>
+
+  <!-- ── RIGHT: Results Column ──────────────────────────────── -->
+  <div class="results-col">
+
+    <div class="results-placeholder" id="placeholder">
+      <div class="ph-icon">₹</div>
+      <p>Fill in your salary details on the left and click <strong>Calculate</strong> to see your complete take-home breakdown with tax analysis and compliance highlights.</p>
+    </div>
+
+    <div class="spinner" id="spinner">
+      <div class="spinner-ring"></div>
+    </div>
+
+    <div class="results-card" id="results-card">
+
+      <!-- Hero -->
+      <div class="takehome-hero fade-up">
+        <div class="hero-label">Monthly Take-Home</div>
+        <div class="hero-amount" id="r-takehome-m">₹0</div>
+        <div class="hero-month" id="r-takehome-a-label">Annual: ₹0</div>
+        <div class="hero-grid">
+          <div class="hero-stat">
+            <div class="hero-stat-label">Gross CTC</div>
+            <div class="hero-stat-val" id="r-ctc">₹0</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label">Effective Tax Rate</div>
+            <div class="hero-stat-val orange" id="r-eff-rate">0%</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label">Monthly TDS</div>
+            <div class="hero-stat-val orange" id="r-tds-m">₹0</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label">Annual TDS</div>
+            <div class="hero-stat-val orange" id="r-tds-a">₹0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breakdown Tabs -->
+      <div class="card fade-up" style="animation-delay:0.08s">
+        <div class="card-body">
+          <div class="tab-row">
+            <button class="tab-btn active" id="tab-monthly" onclick="switchTab('monthly')">Monthly</button>
+            <button class="tab-btn" id="tab-annual" onclick="switchTab('annual')">Annual</button>
+          </div>
+          <table class="breakdown-table" id="breakdown-monthly">
+            <tr class="section-row"><td colspan="2">Earnings</td></tr>
+            <tr><td>Basic Salary</td><td id="m-basic">₹0</td></tr>
+            <tr><td>HRA</td><td id="m-hra">₹0</td></tr>
+            <tr><td>Special Allowance</td><td id="m-special">₹0</td></tr>
+            <tr><td>Other Allowances</td><td id="m-other-allow">₹0</td></tr>
+            <tr class="section-row"><td colspan="2">Deductions</td></tr>
+            <tr><td>Provident Fund (Employee)</td><td class="deduction-val" id="m-epf">₹0</td></tr>
+            <tr><td>ESI (Employee)</td><td class="deduction-val" id="m-esi">₹0</td></tr>
+            <tr><td>Professional Tax</td><td class="deduction-val" id="m-pt">₹0</td></tr>
+            <tr><td>NPS (Employee)</td><td class="deduction-val" id="m-nps">₹0</td></tr>
+            <tr><td>Other Deductions</td><td class="deduction-val" id="m-other-ded">₹0</td></tr>
+            <tr><td>Income Tax (TDS)</td><td class="deduction-val" id="m-tds">₹0</td></tr>
+            <tr class="total-row"><td>Net Take-Home</td><td class="positive-val" id="m-takehome">₹0</td></tr>
+          </table>
+          <table class="breakdown-table" id="breakdown-annual" style="display:none">
+            <tr class="section-row"><td colspan="2">Earnings</td></tr>
+            <tr><td>Fixed Gross Salary</td><td id="a-fixed-gross">₹0</td></tr>
+            <tr><td>Variable / Bonus</td><td id="a-variable">₹0</td></tr>
+            <tr><td>Total Gross</td><td id="a-gross">₹0</td></tr>
+            <tr class="section-row"><td colspan="2">CTC Components</td></tr>
+            <tr><td>Employer PF</td><td id="a-emp-pf">₹0</td></tr>
+            <tr><td>Employer ESI</td><td id="a-emp-esi">₹0</td></tr>
+            <tr><td>Gratuity Provision</td><td id="a-gratuity">₹0</td></tr>
+            <tr class="total-row"><td>Cost to Company (CTC)</td><td id="a-ctc">₹0</td></tr>
+            <tr class="section-row"><td colspan="2">Employee Deductions</td></tr>
+            <tr><td>Employee PF</td><td class="deduction-val" id="a-epf">₹0</td></tr>
+            <tr><td>Employee ESI</td><td class="deduction-val" id="a-esi">₹0</td></tr>
+            <tr><td>Professional Tax</td><td class="deduction-val" id="a-pt">₹0</td></tr>
+            <tr><td>NPS (Employee)</td><td class="deduction-val" id="a-nps">₹0</td></tr>
+            <tr><td>Other Deductions</td><td class="deduction-val" id="a-other-ded">₹0</td></tr>
+            <tr><td>Income Tax (TDS)</td><td class="deduction-val" id="a-tds">₹0</td></tr>
+            <tr class="takehome-row"><td>Annual Take-Home</td><td class="positive-val" id="a-takehome">₹0</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tax Details -->
+      <div class="card fade-up" style="animation-delay:0.12s">
+        <div class="card-header">
+          <div class="card-icon icon-green">🏛️</div>
+          <div><div class="card-title">Tax Analysis</div></div>
+        </div>
+        <div class="card-body">
+          <div id="tax-regime-badge"></div>
+          <table class="breakdown-table">
+            <tr><td>Gross Income</td><td id="t-gross">₹0</td></tr>
+            <tr><td>Standard Deduction</td><td class="deduction-val" id="t-std-ded">₹0</td></tr>
+            <tr><td>Other Exemptions &amp; Deductions</td><td class="deduction-val" id="t-other-ded">₹0</td></tr>
+            <tr class="total-row"><td>Taxable Income</td><td id="t-taxable">₹0</td></tr>
+            <tr><td>Income Tax (on slab)</td><td class="deduction-val" id="t-tax">₹0</td></tr>
+            <tr><td>Surcharge</td><td class="deduction-val" id="t-surcharge">₹0</td></tr>
+            <tr><td>Health &amp; Education Cess (4%)</td><td class="deduction-val" id="t-cess">₹0</td></tr>
+            <tr class="total-row"><td>Total Annual Tax</td><td class="deduction-val" id="t-total-tax">₹0</td></tr>
+          </table>
+          <div style="margin-top:12px">
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;font-weight:600">
+              <span>Effective Tax Rate</span>
+              <span id="t-eff-rate-label">0%</span>
+            </div>
+            <div class="eff-rate-bar"><div class="eff-rate-fill" id="t-eff-rate-bar" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suggestions -->
+      <div id="suggestions-section" class="fade-up" style="animation-delay:0.16s;display:none">
+        <div class="card-header" style="background:white;border-radius:var(--radius) var(--radius) 0 0;border:1px solid #F0F2F5;border-bottom:none;padding:1rem 1.5rem">
+          <div class="card-icon icon-gold">💡</div>
+          <div>
+            <div class="card-title">Smart Highlights</div>
+            <div class="card-subtitle">Compliance checks &amp; tax-saving tips</div>
+          </div>
+        </div>
+        <div id="suggestions-list" style="background:white;border:1px solid #F0F2F5;border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:1rem 1.5rem"></div>
+      </div>
+
+    </div><!-- /results-card -->
+  </div><!-- /results-col -->
+</div><!-- /page -->
+
+<script>
+  let currentRegime = 'new';
+  let currentTab = 'monthly';
+
+  function setRegime(r) {
+    currentRegime = r;
+    document.getElementById('btn-new').className = 'toggle-btn' + (r === 'new' ? ' active-new' : '');
+    document.getElementById('btn-old').className = 'toggle-btn' + (r === 'old' ? ' active-old' : '');
+    document.getElementById('old-regime-section').style.display = r === 'old' ? 'block' : 'none';
+  }
+
+  function switchTab(t) {
+    currentTab = t;
+    document.getElementById('tab-monthly').className = 'tab-btn' + (t === 'monthly' ? ' active' : '');
+    document.getElementById('tab-annual').className = 'tab-btn' + (t === 'annual' ? ' active' : '');
+    document.getElementById('breakdown-monthly').style.display = t === 'monthly' ? 'table' : 'none';
+    document.getElementById('breakdown-annual').style.display = t === 'annual' ? 'table' : 'none';
+  }
+
+  function fmt(n) {
+    if (n === 0) return '₹0';
+    return '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+  }
+  function fmtPct(n) { return n.toFixed(1) + '%'; }
+
+  function getVal(id) {
+    const v = parseFloat(document.getElementById(id).value) || 0;
+    return v;
+  }
+
+  function showError(msg) {
+    const box = document.getElementById('error-box');
+    box.textContent = '⚠️ ' + msg;
+    box.style.display = 'block';
+    setTimeout(() => box.style.display = 'none', 5000);
+  }
+
+  async function calculate() {
+    if (getVal('basic') === 0) {
+      showError('Please enter your Basic Salary to proceed.');
+      return;
+    }
+
+    document.getElementById('placeholder').style.display = 'none';
+    document.getElementById('results-card').style.display = 'none';
+    document.getElementById('spinner').style.display = 'flex';
+
+    const payload = {
+      basic: getVal('basic'),
+      hra: getVal('hra'),
+      special_allowance: getVal('special_allowance'),
+      lta: getVal('lta'),
+      food_allowance: getVal('food_allowance'),
+      medical_allowance: getVal('medical_allowance'),
+      transport_allowance: getVal('transport_allowance'),
+      other_allowances: getVal('other_allowances'),
+      variable_pay_annual: getVal('variable_pay_annual'),
+      bonus_annual: getVal('bonus_annual'),
+      employee_pf: getVal('employee_pf'),
+      employer_pf: getVal('employer_pf'),
+      employee_esi: getVal('employee_esi'),
+      employer_esi: getVal('employer_esi'),
+      professional_tax: getVal('professional_tax'),
+      gratuity: getVal('gratuity'),
+      nps_employee: getVal('nps_employee'),
+      other_deductions: getVal('other_deductions'),
+      regime: currentRegime,
+      rent_paid_annual: getVal('rent_paid_annual'),
+      is_metro: document.getElementById('is_metro').checked,
+      sec80c: getVal('sec80c'),
+      sec80d: getVal('sec80d'),
+      home_loan_interest: getVal('home_loan_interest'),
+      nps_80ccd: getVal('nps_80ccd'),
+      other_80_deductions: getVal('other_80_deductions'),
+    };
+
+    try {
+      const res = await fetch('/calculate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      document.getElementById('spinner').style.display = 'none';
+
+      if (!data.success) {
+        showError(data.error || 'Calculation failed. Please check your inputs.');
+        document.getElementById('placeholder').style.display = 'block';
+        return;
+      }
+
+      renderResults(data);
+    } catch(e) {
+      document.getElementById('spinner').style.display = 'none';
+      showError('Network error. Please try again.');
+      document.getElementById('placeholder').style.display = 'block';
+    }
+  }
+
+  function renderResults(data) {
+    const a = data.annual, m = data.monthly, t = data.tax_details;
+
+    // Hero
+    document.getElementById('r-takehome-m').textContent = fmt(m.take_home);
+    document.getElementById('r-takehome-a-label').textContent = 'Annual: ' + fmt(a.take_home);
+    document.getElementById('r-ctc').textContent = fmt(a.ctc);
+    document.getElementById('r-eff-rate').textContent = fmtPct(t.effective_rate);
+    document.getElementById('r-tds-m').textContent = fmt(m.tds);
+    document.getElementById('r-tds-a').textContent = fmt(a.tds);
+
+    // Monthly breakdown
+    document.getElementById('m-basic').textContent = fmt(m.basic);
+    document.getElementById('m-hra').textContent = fmt(m.hra);
+    document.getElementById('m-special').textContent = fmt(m.special_allowance);
+    document.getElementById('m-other-allow').textContent = fmt(m.other_allowances);
+    document.getElementById('m-epf').textContent = a.employee_pf > 0 ? '-' + fmt(a.employee_pf / 12) : '₹0';
+    document.getElementById('m-esi').textContent = a.employee_esi > 0 ? '-' + fmt(a.employee_esi / 12) : '₹0';
+    document.getElementById('m-pt').textContent = a.professional_tax > 0 ? '-' + fmt(a.professional_tax / 12) : '₹0';
+    document.getElementById('m-nps').textContent = a.nps_employee > 0 ? '-' + fmt(a.nps_employee / 12) : '₹0';
+    document.getElementById('m-other-ded').textContent = a.other_deductions > 0 ? '-' + fmt(a.other_deductions / 12) : '₹0';
+    document.getElementById('m-tds').textContent = m.tds > 0 ? '-' + fmt(m.tds) : '₹0';
+    document.getElementById('m-takehome').textContent = fmt(m.take_home);
+
+    // Annual breakdown
+    document.getElementById('a-fixed-gross').textContent = fmt(a.fixed_gross);
+    document.getElementById('a-variable').textContent = fmt(a.variable);
+    document.getElementById('a-gross').textContent = fmt(a.gross);
+    document.getElementById('a-emp-pf').textContent = fmt(a.employer_pf);
+    document.getElementById('a-emp-esi').textContent = fmt(a.employee_esi); // employer_esi
+    document.getElementById('a-gratuity').textContent = fmt(a.gratuity);
+    document.getElementById('a-ctc').textContent = fmt(a.ctc);
+    document.getElementById('a-epf').textContent = a.employee_pf > 0 ? '-' + fmt(a.employee_pf) : '₹0';
+    document.getElementById('a-esi').textContent = a.employee_esi > 0 ? '-' + fmt(a.employee_esi) : '₹0';
+    document.getElementById('a-pt').textContent = a.professional_tax > 0 ? '-' + fmt(a.professional_tax) : '₹0';
+    document.getElementById('a-nps').textContent = a.nps_employee > 0 ? '-' + fmt(a.nps_employee) : '₹0';
+    document.getElementById('a-other-ded').textContent = a.other_deductions > 0 ? '-' + fmt(a.other_deductions) : '₹0';
+    document.getElementById('a-tds').textContent = a.tds > 0 ? '-' + fmt(a.tds) : '₹0';
+    document.getElementById('a-takehome').textContent = fmt(a.take_home);
+
+    // Tax details
+    const regimeBadge = document.getElementById('tax-regime-badge');
+    if (t.regime === 'new') {
+      regimeBadge.innerHTML = '<div class="tax-badge new-regime">✅ New Tax Regime · FY 2025-26</div>';
+    } else {
+      regimeBadge.innerHTML = '<div class="tax-badge old-regime">📋 Old Tax Regime · FY 2025-26</div>';
+    }
+    document.getElementById('t-gross').textContent = fmt(a.gross);
+    const stdDed = t.deductions_applied.standard_deduction || 0;
+    document.getElementById('t-std-ded').textContent = stdDed > 0 ? '-' + fmt(stdDed) : '₹0';
+    const otherDed = (t.deductions_applied.hra_exemption || 0) +
+                     (t.deductions_applied.food_allowance_exempt || 0) +
+                     (t.deductions_applied.professional_tax || 0) +
+                     (t.deductions_applied.total_chapter_via || 0);
+    document.getElementById('t-other-ded').textContent = otherDed > 0 ? '-' + fmt(otherDed) : '₹0';
+    document.getElementById('t-taxable').textContent = fmt(t.taxable_income);
+    document.getElementById('t-tax').textContent = t.income_tax > 0 ? '-' + fmt(t.income_tax) : '₹0';
+    document.getElementById('t-surcharge').textContent = t.surcharge > 0 ? '-' + fmt(t.surcharge) : '₹0';
+    document.getElementById('t-cess').textContent = t.cess > 0 ? '-' + fmt(t.cess) : '₹0';
+    document.getElementById('t-total-tax').textContent = t.total_tax > 0 ? '-' + fmt(t.total_tax) : '₹0';
+    document.getElementById('t-eff-rate-label').textContent = fmtPct(t.effective_rate);
+    document.getElementById('t-eff-rate-bar').style.width = Math.min(t.effective_rate * 2, 100) + '%';
+
+    // Suggestions
+    const sugs = data.suggestions;
+    const sugsSection = document.getElementById('suggestions-section');
+    const sugsList = document.getElementById('suggestions-list');
+    if (sugs && sugs.length > 0) {
+      sugsList.innerHTML = sugs.map(s => `
+        <div class="suggestion-item sug-${s.type}">
+          <div class="sug-icon">${s.icon}</div>
+          <div>
+            <div class="sug-title">${s.title}</div>
+            <div class="sug-body">${s.body}</div>
+          </div>
+        </div>
+      `).join('');
+      sugsSection.style.display = 'block';
+    } else {
+      sugsSection.style.display = 'none';
+    }
+
+    document.getElementById('results-card').style.display = 'block';
+  }
+
+  function resetForm() {
+    document.querySelectorAll('input[type=number]').forEach(i => i.value = '');
+    document.getElementById('is_metro').checked = false;
+    setRegime('new');
+    document.getElementById('results-card').style.display = 'none';
+    document.getElementById('placeholder').style.display = 'block';
+    document.getElementById('error-box').style.display = 'none';
+  }
+
+  // Enter key triggers calculate
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') calculate();
+  });
+</script>
+</body>
+</html>
